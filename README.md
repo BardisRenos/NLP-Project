@@ -68,7 +68,12 @@ python3 -m pip freeze # to see all packages installed in the active virtualenv
 python3 -c "import sklearn; sklearn.show_versions()"
 ```
 
+## Pipeline steps
 
+
+<p align="center"> 
+<img src="https://github.com/BardisRenos/NLP-Project/blob/master/NlpSteps.png" width="950" height="250" style=centerme>
+</p>
 
 
 
