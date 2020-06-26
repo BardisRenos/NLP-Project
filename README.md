@@ -45,6 +45,8 @@ You have to install the aforementioned libraries.
   pip install spacy
 ```
 
+The default model for the English language is en_core_web_sm. Download models and data for the English language:
+
 ```shell
   python -m spacy download en_core_web_sm
 ```
