@@ -9,10 +9,14 @@
 
 Challenges in natural language processing frequently involve speech recognition, natural language understanding, and natural language generation. Can read more regarding NLP from this [link](https://en.wikipedia.org/wiki/Natural_language_processing) and also this [link](https://www.tutorialspoint.com/artificial_intelligence/artificial_intelligence_natural_language_processing.htm)
 
-## Goal
+
+## What you can do with this Data ?
+You can use this data to analyze Amazon’s Alexa product, discover insights into consumer reviews and assist with machine learning models.You can also train your machine models for sentiment analysis and analyze customer reviews how many positive reviews ? and how many negative reviews ?
 
 
 ## Data set
+
+This dataset consists of 3150 Amazon customer reviews (input text), starts with ratings, date of review, variation, verified_reviews and feedback of various amazon Alexa products like Alexa Echo, Echo dots, Alexa Firesticks etc. for learning how to train Machine for sentiment analysis.
 
 
 ## Tools 
@@ -59,7 +63,12 @@ The default model for the English language is en_core_web_sm. Download models an
 For validation the library insgtallation
 
 ```shell
-  python3 -m pip show scikit-learn # to see which version and where scikit-learn is installed
+python3 -m pip show scikit-learn # to see which version and where scikit-learn is installed
 python3 -m pip freeze # to see all packages installed in the active virtualenv
 python3 -c "import sklearn; sklearn.show_versions()"
 ```
+
+
+
+
+
