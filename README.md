@@ -68,12 +68,33 @@ python3 -m pip freeze # to see all packages installed in the active virtualenv
 python3 -c "import sklearn; sklearn.show_versions()"
 ```
 
-## Pipeline steps
+## Pipeline steps - Pre-processing Data
 
+Cleaning up the text data is necessary to highlight attributes that we’re going to want our machine learning system to pick up on. Cleaning (or pre-processing) the data typically consists of a number of steps:
 
 <p align="center"> 
 <img src="https://github.com/BardisRenos/NLP-Project/blob/master/NlpSteps.png" width="950" height="250" style=centerme>
 </p>
 
 
+Step 1: Remove punctuation
+
+
+
+Step 2: Word Tokenization
+
+
+Step 3: Predicting Parts of Speech for Each Token
+
+
+
+Step 4: Text Lemmatization
+
+
+
+Step 5: Identifying Stop Words
+
+
+
+Step 6: Dependency Parsing
 
