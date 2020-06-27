@@ -123,6 +123,32 @@ Also, If someone wants, it is also possible to break the text into sentences rat
   [Sometimes, while, playing, a, game, ,, you, can, answer, a, question, correctly, but, Alexa, says, you, got, it, wrong, and, answers, the, same, as, you, .,  , I, like, being, able, to, turn, lights, on, and, off, while, away, from, home, .]
 ```
 
+```python
+  # sentence tokenization
+
+  # Load English tokenizer, tagger, parser, NER and word vectors
+  nlp = English()
+
+  # Create the pipeline 'sentencizer' component
+  sbd = nlp.create_pipe('sentencizer')
+
+  # Add the component to the pipeline
+  nlp.add_pipe(sbd)
+
+  #  The "nlp" Object is used to create documents with linguistic annotations.
+  doc = nlp(given_sentence)
+
+  # create list of sentence tokens
+  sents_list = []
+  for sent in doc.sents:
+      sents_list.append(sent.text)
+  print(sents_list)
+```
+
+```text
+  ['Sometimes while playing a game, you can answer a question correctly but Alexa says you got it wrong and answers the same as you.', 
+  ' I like being able to turn lights on and off while away from home.']
+```
 
 **Step 2:** Text Lemmatization (Lexicon Normalization)
 
