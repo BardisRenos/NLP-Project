@@ -20,6 +20,23 @@ You can use this data to analyze Amazon’s Alexa product, discover insights int
 
 This dataset consists of 3150 Amazon customer reviews (input text), starts with ratings, date of review, variation, verified_reviews and feedback of various amazon Alexa products like Alexa Echo, Echo dots, Alexa Firesticks etc. for learning how to train Machine for sentiment analysis.
 
+```python
+  # Loading TSV file
+  df_amazon = pd.read_csv(r"/home/renos/Desktop/datasets_39657_61725_amazon_alexa.tsv", sep="\t")
+  print(df_amazon.shape)
+  print("1", len(df_amazon[df_amazon.feedback == 1]))
+  print("0", len(df_amazon[df_amazon.feedback == 0]))
+  print(df_amazon.feedback.value_counts())
+```
+
+```text
+  (3150, 5)
+  1 2893
+  0 257
+  1    2893
+  0     257
+```
+
 
 ## Tools 
 
@@ -146,6 +163,8 @@ Also, If someone wants, it is also possible to break the text into sentences rat
 ```
 
 ```text
+# The result is that the text is splitted into two.
+
   ['Sometimes while playing a game, you can answer a question correctly but Alexa says you got it wrong and answers the same as you.', 
   ' I like being able to turn lights on and off while away from home.']
 ```
