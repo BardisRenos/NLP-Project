@@ -117,6 +117,12 @@ Also, If someone wants, it is also possible to break the text into sentences rat
   print(list_of_tokens)
 ```
 
+```text
+# The resultafter the stemming.
+
+  [Sometimes, while, playing, a, game, ,, you, can, answer, a, question, correctly, but, Alexa, says, you, got, it, wrong, and, answers, the, same, as, you, .,  , I, like, being, able, to, turn, lights, on, and, off, while, away, from, home, .]
+```
+
 
 **Step 2:** Text Lemmatization (Lexicon Normalization)
 
