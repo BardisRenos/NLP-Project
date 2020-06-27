@@ -24,15 +24,23 @@ This dataset consists of 3150 Amazon customer reviews (input text), starts with 
   # Loading TSV file
   df_amazon = pd.read_csv(r"/home/renos/Desktop/datasets_39657_61725_amazon_alexa.tsv", sep="\t")
   print(df_amazon.shape)
+  
+  # Count how many possitive and negatve feedbacks
   print("1", len(df_amazon[df_amazon.feedback == 1]))
   print("0", len(df_amazon[df_amazon.feedback == 0]))
+  
+  # Also here the code counts the same and the results are the same
   print(df_amazon.feedback.value_counts())
 ```
 
+The data set is consistent of 3158 rows and 5 columns. Also, the data set has 2893 possitive sentences and 257 negative sentences. I double check by coding two different ways and with the same results.
+
 ```text
   (3150, 5)
+  
   1 2893
   0 257
+  
   1    2893
   0     257
 ```
@@ -90,7 +98,7 @@ python3 -m pip freeze # to see all packages installed in the active virtualenv
 python3 -c "import sklearn; sklearn.show_versions()"
 ```
 
-## Analyzing and Processing Text With spaCy
+## Analyzing and Processing Text (By using spaCy)
 
 Cleaning up the text data is necessary to highlight attributes that we’re going to want our machine learning system to pick up on. Cleaning (or pre-processing) the data typically consists of a number of steps:
 
@@ -135,7 +143,7 @@ Also, If someone wants, it is also possible to break the text into sentences rat
 ```
 
 ```text
-# The resultafter the stemming.
+# The result after the stemming.
 
   [Sometimes, while, playing, a, game, ,, you, can, answer, a, question, correctly, but, Alexa, says, you, got, it, wrong, and, answers, the, same, as, you, .,  , I, like, being, able, to, turn, lights, on, and, off, while, away, from, home, .]
 ```
@@ -190,6 +198,7 @@ One method for doing this is called **stemming**. Stemming involves simply loppi
       print(words.text, words.lemma_)
 ```
 
+As can be seen the lemmatize word is clean and only thye root word is kept.
 
 ```text
 # The results are: 
@@ -205,4 +214,25 @@ One method for doing this is called **stemming**. Stemming involves simply loppi
 <p align="justify">
 Most text data that we work with is going to contain a lot of words that aren’t actually useful to us. These words, called stopwords, are useful in human speech, but they don’t have much to contribute to data analysis. Removing stopwords helps us eliminate noise and distraction from our text data, and also speeds up the time analysis takes (since there are fewer words to process).
  </p>
+ 
+In this case spaCy has a list of its own stopwords that can be imported. We can quickly and efficiently remove stopwords from the given text using SpaCy.
+ 
+ ```python
+  import spacy
+  from spacy.lang.en import English
+
+  spacy_stopwords = spacy.lang.en.stop_words.STOP_WORDS
+
+  print('Number of stop words: %d' % len(spacy_stopwords))
+
+  print('First ten stop words: %s' % list(spacy_stopwords))
+
+ ```
+ 
+ ```text
+  Number of total stop words: 326
+  First ten stop words: ['our', 'amount', 'call', 'fifteen', 'several', 'though', '’m', 'becoming', '‘ll', 'also', 'anyone', 'or', '’ll', 'one', 'upon', "'s", 'enough', 'whenever', 'eight', '’ve', 'else', 'across', 'become', 'bottom', 'am', 'meanwhile', 'last', 'ten', 'what', 'six', '’re', 'regarding', 'their', 'became', 'much', 'please', 'and', 'nor', 'me', 'forty', 'another', 'never', 'whom', 'mostly', 'had', 'will', 'wherever', 'into', 'herself', 'have', 'doing', 'nothing', 'her', 'with', '’s', 'ourselves', 'over', 'get', 'it', 'indeed', 'amongst', 'each', 'rather', 'some', 'front', 'ever', 'then', 'whether', 'unless', 'beyond', 'nowhere', 'twelve', 'i', 'they', 'otherwise', 'still', 'yours', 'sometime', 'has', 'must', 'thus', 'made', 'thereby', 'nobody', 'once', "'d", 'whereupon', 'cannot', 'take', 'so', 'together', 'move', 'to', 'whose', 'for', 'at', 'we', 'while', 'ca', 'someone', 'namely', 'between', 'many', 'whereas', 'can', 'everywhere', 'somewhere', 'but', 'myself', 'sometimes', 'such', 'go', 'off', 'n’t', 'none', 'than', 'again', 'thence', 'which', 'hereupon', 'anyway', 'thereafter', 'throughout', 'thereupon', 'moreover', 'other', '‘s', '‘m', 'itself', 'others', 'everything', 'those', 'always', 'former', 'make', 'through', 'via', 'few', 'he', 'hundred', 're', 'was', 'say', 'serious', 'either', 'formerly', 'afterwards', 'really', 'whence', '‘ve', 'yourself', 'this', 'however', "'m", 'behind', 'may', 'give', 'wherein', 'back', 'do', 'fifty', 'in', 'below', 'sixty', "n't", 'nevertheless', 'onto', 'alone', 'why', 'about', 'by', 'four', 'seemed', 'less', '‘d', 'up', 'beside', 'most', 'hence', 'from', 'besides', 'of', 'out', 'anyhow', 'toward', 'towards', 'first', 'perhaps', 'your', 'eleven', 'seems', 'next', 'nine', 'she', 'five', 'twenty', 'hers', 'almost', 'not', 'same', 'now', 'whereafter', 'under', 'who', 'themselves', 'side', 'own', 'well', 'somehow', 'often', 'noone', 'did', 'my', 'least', 'various', 'see', '’d', 'due', 'you', 'its', 'whither', 'how', 'all', 'neither', 'after', 'quite', 'his', 'might', 'should', "'ve", 'except', 'anything', "'ll", 'being', 'yourselves', 'no', 'done', 'used', 'be', 'even', 'because', 'were', 'since', 'latterly', 'something', 'everyone', 'an', 'using', 'empty', 'hereafter', 'would', 'when', 'above', 'put', 'among', 'whole', 'seem', 'every', 'name', 'are', 'although', 'part', 'only', 'too', 'yet', 'a', 'where', 'more', 'already', 'seeming', 'full', 'becomes', 'per', 'further', 'that', 'both', 'third', 'these', 'against', 'without', 'whereby', 'top', 'them', 'ours', 'therefore', 'within', 'on', 'around', 'three', 'herein', 'is', "'re", 'very', 'been', 'keep', 'us', 'himself', 'whoever', 'thru', 'until', 'there', '‘re', 'could', 'latter', 'mine', 'therein', 'n‘t', 'does', 'here', 'him', 'elsewhere', 'during', 'any', 'down', 'the', 'as', 'show', 'along', 'hereby', 'just', 'if', 'beforehand', 'two', 'anywhere', 'whatever', 'before']
+
+ ```
+ 
 
