@@ -190,6 +190,17 @@ One method for doing this is called **stemming**. Stemming involves simply loppi
       print(words.text, words.lemma_)
 ```
 
+
+```text
+# The results are: 
+
+  compute compute
+  computer computer
+  computed compute
+  computing computing
+```
+
+
 **Step 3:** Removing Stop Words
 <p align="justify">
 Most text data that we work with is going to contain a lot of words that aren’t actually useful to us. These words, called stopwords, are useful in human speech, but they don’t have much to contribute to data analysis. Removing stopwords helps us eliminate noise and distraction from our text data, and also speeds up the time analysis takes (since there are fewer words to process).
