@@ -87,8 +87,36 @@ Also, If someone wants, it is also possible to break the text into sentences rat
 </p>
 
 ```python
+  import pandas as pd
+
+  df_amazon = pd.read_csv(r"/home/renos/Desktop/datasets_39657_61725_amazon_alexa.tsv", sep="\t")
+
+  given_sentence = df_amazon.iloc[2]['verified_reviews']
+  print(given_sentence)
   
 ```
+```text
+# The given test: 
+
+  Sometimes while playing a game, you can answer a question correctly but Alexa says you got it wrong and answers the same as you.  I like being able to turn       lights on and off while away from home.  
+```
+
+```python
+  # For word Tokenization
+  from spacy.lang.en import English
+
+  # Because we have english corpus. Load English tokenizer and word vectors
+  nlp = English()
+  my_given_doc = nlp(given_sentence)
+
+  # The "nlp" Object is used to create documents with linguistic annotations.
+  list_of_tokens = []
+  for tokens in my_given_doc:
+      list_of_tokens.append(tokens)
+
+  print(list_of_tokens)
+```
+
 
 **Step 2:** Text Lemmatization (Lexicon Normalization)
 
