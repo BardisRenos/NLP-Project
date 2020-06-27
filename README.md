@@ -177,6 +177,19 @@ Next step is **Lexicon normalization** is another step in the text data cleaning
 One method for doing this is called **stemming**. Stemming involves simply lopping off easily-identified prefixes and suffixes to produce what’s often the simplest version of a word. Connection, for example, would have the -ion suffix removed and be correctly reduced to connect. This kind of simple stemming is often all that’s needed, but lemmatization—which actually looks at words and their roots (called lemma) as described in the dictionary—is more precise
 </p>
 
+
+```python
+  import spacy
+
+  nlp = spacy.load('en_core_web_sm')
+
+  # Implement lemmatization on a sentence
+  lemmatization = nlp(u'compute computer computed computing')
+
+  for words in lemmatization:
+      print(words.text, words.lemma_)
+```
+
 **Step 3:** Removing Stop Words
 <p align="justify">
 Most text data that we work with is going to contain a lot of words that aren’t actually useful to us. These words, called stopwords, are useful in human speech, but they don’t have much to contribute to data analysis. Removing stopwords helps us eliminate noise and distraction from our text data, and also speeds up the time analysis takes (since there are fewer words to process).
