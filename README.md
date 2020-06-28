@@ -297,7 +297,10 @@ Creating the
   tfidf_vector = TfidfVectorizer(tokenizer=tokenizer_text)
  ```
  
- Choosing the classifier 
+### Choosing the classifier 
+
+A random forest is a meta estimator that fits a number of decision tree classifiers on various sub-samples of the dataset and uses averaging to improve the predictive accuracy and control over-fitting. The sub-sample size is controlled with the max_samples parameter if bootstrap=True (default), otherwise the whole dataset is used to build each tree. From the link you can find more detail 
+[link](https://scikitlearn.org/stable/modules/generated/sklearn.ensemble.RandomForestClassifier.html) 
  
  ```python
   # Setting the classifier
