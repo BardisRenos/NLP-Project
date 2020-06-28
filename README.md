@@ -281,31 +281,14 @@ In this case spaCy has a list of its own stopwords that can be imported. We can 
  
  ## Creating the model and the pipeline
  
- In order to create the pipeline that put them into 
+ In order to create the pipeline that put them into the **tokenizer_text** method from the **stop_words** python file to apply tokenization and lemmatization. Also, removing the punctuation and converting the words into lower case.
  
  ```python
   from stop_words import tokenizer_text  
  ```
  
- ```python
-  class text_transformation(TransformerMixin):
-    def transform(self, X, **transform_params):
-        # Cleaning Text
-        return [clean_text(text) for text in X]
+Creating the 
 
-    def fit(self, X, y=None, **fit_params):
-        return self
-
-    def get_params(self, deep=True):
-        return {}
-
-
-# Basic function to clean the text
-def clean_text(text):
-    # Removing spaces and converting text into lowercase format
-    return text.strip().lower()
- ```
- 
  ```python
   # Setting the bag of words
   bags_of_words_vector = CountVectorizer(tokenizer=tokenizer_text, ngram_range=(1, 1))
@@ -314,28 +297,36 @@ def clean_text(text):
   tfidf_vector = TfidfVectorizer(tokenizer=tokenizer_text)
  ```
  
+ Choosing the classifier 
+ 
  ```python
   # Setting the classifier
   classifier = RandomForestClassifier(criterion='entropy', random_state=0)
 
  ```
 
+Setting the pipeline to apply the steps of cleansing and vectorized and appling the classification
+
 ```python
     # Create pipeline for
-    # 1. Cleaning the text
-    # 2. Creating the Bag of Words  
-    # 3. Applying the classification
-    pipeline = Pipeline([("cleaner", text_transformation()),
-                         ('vectorizer', bags_of_words_vector),
+    # 1. Creating the Bag of Words and applying Cleaning the text
+    # 2. Applying the classification
+    pipeline = Pipeline([('vectorizer', bags_of_words_vector),
                          ('classifier', classifier)])
 ```
+
+Applying training on train data
 
 ```python
   # Model generation on our training data
   pipeline.fit(X_train, y_train)
 
+Prediction on testing data
+
   # Predicting with testing data set
   predict_label = pipeline.predict(X_test)
+
+Calculating the accuracy
 
   # Show the model Accuracy
   print("Accuracy : {:.2f}%".format(accuracy_score(y_test, predict_label) * 100))
