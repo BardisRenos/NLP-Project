@@ -240,6 +240,8 @@ In this case spaCy has a list of its own stopwords that can be imported. We can 
  
  ```python
  
+  import spacy
+  from spacy.lang.en import English
   import string
   nlp = spacy.load('en')
   
@@ -265,9 +267,14 @@ In this case spaCy has a list of its own stopwords that can be imported. We can 
  
  Sometimes while playing a game, you can answer a question correctly but Alexa says you got it wrong and answers the same as you.  I like being able to turn lights on and off while away from home.
  
+ # The punctuation list
+ !"#$%&'()*+,-./:;<=>?@[\]^_`{|}~
+ 
  # And the text after the removing the stop words and the punctuation
  
 ['playing', 'game', 'answer', 'question', 'correctly', 'alexa', 'says', 'got', 'wrong', 'answers', 'like', 'able', 'turn', 'lights', 'away', 'home']
 
  ```
+ 
+ 
 
