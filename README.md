@@ -304,6 +304,40 @@ In this case spaCy has a list of its own stopwords that can be imported. We can 
 def clean_text(text):
     # Removing spaces and converting text into lowercase format
     return text.strip().lower()
-  
+ ```
+ 
+ ```python
+  # Setting the bag of words
+  bags_of_words_vector = CountVectorizer(tokenizer=tokenizer_text, ngram_range=(1, 1))
+
+  # Creating the TF-iDF vector
+  tfidf_vector = TfidfVectorizer(tokenizer=tokenizer_text)
+ ```
+ 
+ ```python
+  # Setting the classifier
+  classifier = RandomForestClassifier(criterion='entropy', random_state=0)
+
  ```
 
+```python
+    # Create pipeline for
+    # 1. Cleaning the text
+    # 2. Creating the Bag of Words  
+    # 3. Applying the classification
+    pipeline = Pipeline([("cleaner", text_transformation()),
+                         ('vectorizer', bags_of_words_vector),
+                         ('classifier', classifier)])
+```
+
+```python
+  # Model generation on our training data
+  pipeline.fit(X_train, y_train)
+
+  # Predicting with testing data set
+  predict_label = pipeline.predict(X_test)
+
+  # Show the model Accuracy
+  print("Accuracy : {:.2f}%".format(accuracy_score(y_test, predict_label) * 100))
+
+```
