@@ -227,13 +227,47 @@ In this case spaCy has a list of its own stopwords that can be imported. We can 
 
   print('All stop words: %s' % list(spacy_stopwords))
 
-
  ```
  
  ```text
   Number of total stop words: 326
+  
   All stop words: ['our', 'amount', 'call', 'fifteen', 'several', 'though', '’m', 'becoming', '‘ll', 'also', 'anyone', 'or', '’ll', 'one', 'upon', "'s", 'enough', 'whenever', 'eight', '’ve', 'else', 'across', 'become', 'bottom', 'am', 'meanwhile', 'last', 'ten', 'what', 'six', '’re', 'regarding', 'their', 'became', 'much', 'please', 'and', 'nor', 'me', 'forty', 'another', 'never', 'whom', 'mostly', 'had', 'will', 'wherever', 'into', 'herself', 'have', 'doing', 'nothing', 'her', 'with', '’s', 'ourselves', 'over', 'get', 'it', 'indeed', 'amongst', 'each', 'rather', 'some', 'front', 'ever', 'then', 'whether', 'unless', 'beyond', 'nowhere', 'twelve', 'i', 'they', 'otherwise', 'still', 'yours', 'sometime', 'has', 'must', 'thus', 'made', 'thereby', 'nobody', 'once', "'d", 'whereupon', 'cannot', 'take', 'so', 'together', 'move', 'to', 'whose', 'for', 'at', 'we', 'while', 'ca', 'someone', 'namely', 'between', 'many', 'whereas', 'can', 'everywhere', 'somewhere', 'but', 'myself', 'sometimes', 'such', 'go', 'off', 'n’t', 'none', 'than', 'again', 'thence', 'which', 'hereupon', 'anyway', 'thereafter', 'throughout', 'thereupon', 'moreover', 'other', '‘s', '‘m', 'itself', 'others', 'everything', 'those', 'always', 'former', 'make', 'through', 'via', 'few', 'he', 'hundred', 're', 'was', 'say', 'serious', 'either', 'formerly', 'afterwards', 'really', 'whence', '‘ve', 'yourself', 'this', 'however', "'m", 'behind', 'may', 'give', 'wherein', 'back', 'do', 'fifty', 'in', 'below', 'sixty', "n't", 'nevertheless', 'onto', 'alone', 'why', 'about', 'by', 'four', 'seemed', 'less', '‘d', 'up', 'beside', 'most', 'hence', 'from', 'besides', 'of', 'out', 'anyhow', 'toward', 'towards', 'first', 'perhaps', 'your', 'eleven', 'seems', 'next', 'nine', 'she', 'five', 'twenty', 'hers', 'almost', 'not', 'same', 'now', 'whereafter', 'under', 'who', 'themselves', 'side', 'own', 'well', 'somehow', 'often', 'noone', 'did', 'my', 'least', 'various', 'see', '’d', 'due', 'you', 'its', 'whither', 'how', 'all', 'neither', 'after', 'quite', 'his', 'might', 'should', "'ve", 'except', 'anything', "'ll", 'being', 'yourselves', 'no', 'done', 'used', 'be', 'even', 'because', 'were', 'since', 'latterly', 'something', 'everyone', 'an', 'using', 'empty', 'hereafter', 'would', 'when', 'above', 'put', 'among', 'whole', 'seem', 'every', 'name', 'are', 'although', 'part', 'only', 'too', 'yet', 'a', 'where', 'more', 'already', 'seeming', 'full', 'becomes', 'per', 'further', 'that', 'both', 'third', 'these', 'against', 'without', 'whereby', 'top', 'them', 'ours', 'therefore', 'within', 'on', 'around', 'three', 'herein', 'is', "'re", 'very', 'been', 'keep', 'us', 'himself', 'whoever', 'thru', 'until', 'there', '‘re', 'could', 'latter', 'mine', 'therein', 'n‘t', 'does', 'here', 'him', 'elsewhere', 'during', 'any', 'down', 'the', 'as', 'show', 'along', 'hereby', 'just', 'if', 'beforehand', 'two', 'anywhere', 'whatever', 'before']
 
  ```
  
+ Removing the stop words and punctuation
+ 
+ ```python
+ 
+  import string
+  nlp = spacy.load('en')
+  
+  parser = English()
+  stop_words = spacy.lang.en.stop_words.STOP_WORDS
+  
+  mytoken_text = parser(given_sentence)
+  
+  print(mytoken_text)
+  punct = string.punctuation
+  
+  my_tokens = [word.lemma_.lower().strip() for word in mytoken_text]
+
+  # Removing the stop words and the punctuations
+  my_tokens = [word for word in my_tokens if word not in stop_words and word not in punct]
+
+  print(my_tokens)
+
+ ```
+ 
+ ```text
+ # The text from the dataset 
+ 
+ Sometimes while playing a game, you can answer a question correctly but Alexa says you got it wrong and answers the same as you.  I like being able to turn lights on and off while away from home.
+ 
+ # And the text after the removing the stop words and the punctuation
+ 
+['playing', 'game', 'answer', 'question', 'correctly', 'alexa', 'says', 'got', 'wrong', 'answers', 'like', 'able', 'turn', 'lights', 'away', 'home']
+
+ ```
 
