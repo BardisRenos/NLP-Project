@@ -279,5 +279,31 @@ In this case spaCy has a list of its own stopwords that can be imported. We can 
 
  ```
  
+ ## Creating the model and the pipeline
  
+ In order to create the pipeline that put them into 
+ 
+ ```python
+  from stop_words import tokenizer_text  
+ ```
+ 
+ ```python
+  class text_transformation(TransformerMixin):
+    def transform(self, X, **transform_params):
+        # Cleaning Text
+        return [clean_text(text) for text in X]
+
+    def fit(self, X, y=None, **fit_params):
+        return self
+
+    def get_params(self, deep=True):
+        return {}
+
+
+# Basic function to clean the text
+def clean_text(text):
+    # Removing spaces and converting text into lowercase format
+    return text.strip().lower()
+  
+ ```
 
