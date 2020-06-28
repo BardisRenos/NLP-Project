@@ -245,17 +245,20 @@ In this case spaCy has a list of its own stopwords that can be imported. We can 
   import string
   nlp = spacy.load('en')
   
+  # Setting the parser into English tokenizer
   parser = English()
-  stop_words = spacy.lang.en.stop_words.STOP_WORDS
-  
-  mytoken_text = parser(given_sentence)
-  
-  print(mytoken_text)
-  punct = string.punctuation
-  
-  my_tokens = [word.lemma_.lower().strip() for word in mytoken_text]
 
-  # Removing the stop words and the punctuations
+  # Tokenize the text
+  mytoken_text = parser(given_sentence)
+  # Showing the tokenized words
+  print(mytoken_text)
+  # The punctuation characters
+  punct = string.punctuation
+  print(punct)
+  # Lemmatize the words and convert into lower case words and strip them
+  # from the empty fileds.
+  my_tokens = [word.lemma_.lower().strip() for word in mytoken_text]
+  # Removing the stop words and the punctuations.
   my_tokens = [word for word in my_tokens if word not in stop_words and word not in punct]
 
   print(my_tokens)
