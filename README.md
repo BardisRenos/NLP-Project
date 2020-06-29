@@ -323,15 +323,16 @@ Applying training on train data
 ```python
   # Model generation on our training data
   pipeline.fit(X_train, y_train)
+```
 
 Prediction on testing data
-
+```python
   # Predicting with testing data set
   predict_label = pipeline.predict(X_test)
+```
 
 Calculating the accuracy
-
+```python
   # Show the model Accuracy
   print("Accuracy : {:.2f}%".format(accuracy_score(y_test, predict_label) * 100))
-
 ```
