@@ -58,9 +58,8 @@ X_train, X_test, y_train, y_test = train_test_split(X, y, test_size=0.2)
 classifier = RandomForestClassifier(criterion='entropy', random_state=0)
 
 # Create pipeline for
-# 1. Cleaning the text
-# 2. Creating the Bag of Words
-# 3. Applying the classification
+# 1. Creating the Bag of Words and applying Cleaning the text
+# 2. Applying the classification
 pipeline = Pipeline([('vectorizer', bags_of_words_vector),
                      ('classifier', classifier)])
 
