@@ -287,8 +287,6 @@ In this case spaCy has a list of its own stopwords that can be imported. We can 
   from stop_words import tokenizer_text  
  ```
  
-Creating the 
-
  ```python
   # Setting the bag of words
   bags_of_words_vector = CountVectorizer(tokenizer=tokenizer_text, ngram_range=(1, 1))
